@@ -1,0 +1,27 @@
+export http_proxy=http://192.168.254.254:8080
+export https_proxy=$http_proxy
+export ftp_proxy=$http_proxy
+export LANG=C
+export LC_CTYPE=en_US.UTF-8
+#export LANG=en_US.UTF-8
+#export LANG=ja_JP.UTF-8
+export HISTSIZE=999999
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=$HISTSIZE
+export ZLS_COLORS=$LS_COLORS
+#export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
+export LESS=-R
+export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
+export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink
+export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
+export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+export EDITOR=vim
+#export BINDIR=~/bin
+#export CCACHE_BIN_DIR=/usr/lib/ccache/bin
+#export DISTCC_BIN_DIR=/usr/lib/distcc/bin
+#export PATH=$CCACHE_BIN_DIR:$DISTCC_BIN_DIR:$PATH:$BINDIR
+export PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+export PATH HOME TERM
