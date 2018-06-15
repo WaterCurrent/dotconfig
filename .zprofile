@@ -1,6 +1,3 @@
-export http_proxy=http://192.168.254.254:8080
-export https_proxy=$http_proxy
-export ftp_proxy=$http_proxy
 export LANG=C
 export LC_CTYPE=en_US.UTF-8
 #export LANG=en_US.UTF-8
@@ -24,4 +21,4 @@ export EDITOR=vim
 #export DISTCC_BIN_DIR=/usr/lib/distcc/bin
 #export PATH=$CCACHE_BIN_DIR:$DISTCC_BIN_DIR:$PATH:$BINDIR
 export PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
-export PATH HOME TERM
+#export PATH HOME TERM

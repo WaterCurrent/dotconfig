@@ -1,32 +1,33 @@
 bindkey -e
 autoload -Uz vcs_info
+vcs_info
 autoload -Uz add-zsh-hook
+#add-zsh-hook
 autoload -Uz compinit
 compinit
-autoload colors
+autoload -Uz colors
 colors
 autoload -Uz promptinit
 promptinit
 
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-setopt hist_reduce_blanks
-setopt hist_save_no_dups
-setopt hist_no_store
-setopt list_packed
-setopt prompt_subst
-setopt nobeep
-setopt auto_menu
-setopt no_flow_control
-#setopt auto_cd
-setopt auto_pushd
-setopt share_history
-setopt extended_history
-setopt auto_param_keys
-setopt brace_ccl
-setopt chase_links
-setopt noautoremoveslash
-setopt magic_equal_subst
+setopt hist_ignore_all_dups \
+hist_ignore_space \
+hist_reduce_blanks \
+hist_save_no_dups \
+hist_no_store \
+list_packed \
+prompt_subst \
+nobeep \
+auto_menu \
+no_flow_control \
+auto_pushd \
+share_history \
+extended_history \
+auto_param_keys \
+brace_ccl \
+chase_links \
+noautoremoveslash \
+magic_equal_subst \
 
 zstyle ':completion:*:default' list-colors ${LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
@@ -89,3 +90,6 @@ alias eqy='equery y'
 alias eqs='equery s'
 alias eqw='equery w'
 
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+  zcompile ~/.zshrc
+fi
