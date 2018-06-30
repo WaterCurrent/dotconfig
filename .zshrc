@@ -89,7 +89,7 @@ alias eqm='equery m'
 alias eqy='equery y'
 alias eqs='equery s'
 alias eqw='equery w'
-alias tmux='tmux -u'
+alias tmux='tmux -u2'
 
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
   zcompile ~/.zshrc
