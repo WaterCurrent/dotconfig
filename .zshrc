@@ -37,6 +37,7 @@ zstyle ':completion:*' list-colors 'di=36' 'ln=35'
 zstyle ':completion:*:default' list-colors ${LS_COLORS}
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+zstyle ':completion:*:doas:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 zstyle ':vcs_info:git:*' check-for-changes true
@@ -53,7 +54,7 @@ SPROMPT="correct: %R -> %r ? "
 GREP_OPTIONS="--color=auto --binary-files=without-match"
 LS_OPTIONS="--color=auto"
 
-ssh() {
+function ssh() {
   if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
     tmux rename-window ${@: -1}
     command ssh "$@"
