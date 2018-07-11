@@ -53,8 +53,7 @@ zstyle ':vcs_info:*' formats "[%F{green}%c%u%b%f]"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 
-PROMPT="%n@%m:%F{yellow}%2~%f
-%F{yellow}%#%f "
+PROMPT="[%n@%m:%F{yellow}%2~%f%F{yellow}%f]%F{yellow}%#%f "
 RPROMPT="%{$fg[black]%(?.$bg[green].$bg[red])%}<%?> \$history[\$((\$HISTCMD-1))]%{$reset_color%}"
 RPROMPT='${vcs_info_msg_0_} '$RPROMPT
 SPROMPT="correct: %R %F{green}->%f %r [nyae]? "
