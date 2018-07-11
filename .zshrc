@@ -2,7 +2,8 @@ bindkey -e
 autoload -Uz vcs_info
 vcs_info
 autoload -Uz add-zsh-hook
-#add-zsh-hook
+autoload -Uz chpwd_recent_dirs cdr
+add-zsh-hook chpwd chpwd_recent_dirs
 autoload -Uz compinit
 compinit
 autoload -Uz colors
@@ -10,7 +11,8 @@ colors
 autoload -Uz promptinit
 promptinit
 
-setopt hist_ignore_all_dups \
+setopt \
+hist_ignore_all_dups \
 hist_ignore_space \
 hist_reduce_blanks \
 hist_save_no_dups \
@@ -28,6 +30,7 @@ brace_ccl \
 chase_links \
 noautoremoveslash \
 magic_equal_subst \
+ignoreeof \
 
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
@@ -37,7 +40,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
+zstyle ":chpwd:*" recent-dirs-default true
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
@@ -47,6 +50,7 @@ precmd () { vcs_info }
 
 PROMPT="%F{yellow}%#%f "
 RPROMPT="%n@%m:%F{yellow}%2~%f"
+RPROMPT='${vcs_info_msg_0_} '$RPROMPT
 SPROMPT="correct: %R -> %r ? "
 
 GREP_OPTIONS="--color=auto --binary-files=without-match"
@@ -89,6 +93,10 @@ alias eqy='equery y'
 alias eqs='equery s'
 alias eqw='equery w'
 alias tmux='tmux -u2'
+
+if [ -e ~/.zshrc.local ]; then
+    source ~/.zshrc_local
+fi
 
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
   zcompile ~/.zshrc
