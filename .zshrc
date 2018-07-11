@@ -21,23 +21,28 @@ list_packed \
 prompt_subst \
 nobeep \
 auto_menu \
-no_flow_control \
 auto_pushd \
+auto_param_keys \
 share_history \
 extended_history \
-auto_param_keys \
+extended_glob \
 brace_ccl \
 chase_links \
 noautoremoveslash \
+no_flow_control \
 magic_equal_subst \
 ignoreeof \
+correct \
+transient_rprompt \
 
 zstyle ':completion::complete:*' use-cache 1
+zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 zstyle ':completion:*:doas:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:default' menu select=1
+zstyle ':completion:*' ignore-parents parent pwd ..
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ":chpwd:*" recent-dirs-default true
