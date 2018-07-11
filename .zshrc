@@ -56,7 +56,7 @@ precmd () { vcs_info }
 PROMPT="%F{yellow}%#%f "
 RPROMPT="%n@%m:%F{yellow}%2~%f"
 RPROMPT='${vcs_info_msg_0_} '$RPROMPT
-SPROMPT="correct: %R -> %r ? "
+SPROMPT="correct: %R %F{green}->%f %r [nyae]? "
 
 GREP_OPTIONS="--color=auto --binary-files=without-match"
 LS_OPTIONS="--color=auto"
