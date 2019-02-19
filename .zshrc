@@ -100,7 +100,7 @@ alias eqw='equery w'
 alias tmux='tmux -u2'
 
 if [ -e ~/.zshrc.local ]; then
-    source ~/.zshrc_local
+    source ~/.zshrc.local
 fi
 
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
