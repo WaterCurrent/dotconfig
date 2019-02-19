@@ -18,3 +18,6 @@ set smartcase
 set incsearch
 set wrapscan
 set hlsearch
+set vb t_vb=
+set shortmess+=I
+set scrolloff=5
