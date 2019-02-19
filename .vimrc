@@ -1,6 +1,4 @@
 set fenc=utf-8
-set nobackup
-set noswapfile
 set autoread
 set hidden
 set showcmd
@@ -21,3 +19,6 @@ set hlsearch
 set vb t_vb=
 set shortmess+=I
 set scrolloff=5
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
+endif
