@@ -23,10 +23,15 @@ set vb t_vb=
 set shortmess+=I
 set scrolloff=5
 
-" https://sites.google.com/site/fudist/Home/vim-nihongo-ban/-vimrc-sample
 """"""""""""""""""""""""""""""
-" 挿入モード時、ステータスラインの色を変更
+"foldmethod Setting
+set foldmethod=indent
+noremap [space] <nop>
+  nmap <Space> [space]
+noremap [space] za
+
 """"""""""""""""""""""""""""""
+"change insert mode status line color
 let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
 
 if has('syntax')
@@ -58,6 +63,7 @@ function! s:GetHighlight(hi)
 endfunction
 
 """"""""""""""""""""""""""""""
+" local setting
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
