@@ -1,3 +1,5 @@
+colorscheme default
+set nocompatible
 set fenc=utf-8
 set encoding=utf-8
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
@@ -22,13 +24,24 @@ set hlsearch
 set vb t_vb=
 set shortmess+=I
 set scrolloff=5
-
+set mouse=
+set history=10000
+set showmatch
+""""""""""""""""""""""""""""""
+"command line mode key bind
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-d> <Del>
 """"""""""""""""""""""""""""""
 "foldmethod Setting
-set foldmethod=indent
-noremap [space] <nop>
-  nmap <Space> [space]
-noremap [space] za
+"set foldmethod=indent
+"noremap [space] <nop>
+"  nmap <Space> [space]
+"noremap [space] za
 
 """"""""""""""""""""""""""""""
 "change insert mode status line color
