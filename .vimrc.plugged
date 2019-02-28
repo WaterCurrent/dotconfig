@@ -6,12 +6,18 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'tomtom/tcomment_vim'
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
 Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'Shougo/neocomplete.vim'
+Plug 'w0rp/ale'
+Plug 'osyo-manga/vim-over'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
+""""""""""""""""""""""""""""""""""
+"vim-over
+nnoremap <silent> <Space>// :OverCommandLine<CR>%s/
 """"""""""""""""""""""""""""""""""
 "vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1

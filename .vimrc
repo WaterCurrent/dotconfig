@@ -28,6 +28,10 @@ set mouse=
 set history=10000
 set showmatch
 """"""""""""""""""""""""""""""
+"buffer
+nnoremap <silent> <C-j> :bprev<CR>
+nnoremap <silent> <C-k> :bnext<CR>
+""""""""""""""""""""""""""""""
 "command line mode key bind
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
@@ -42,7 +46,6 @@ cnoremap <C-d> <Del>
 "noremap [space] <nop>
 "  nmap <Space> [space]
 "noremap [space] za
-
 """"""""""""""""""""""""""""""
 "change insert mode status line color
 let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
@@ -74,7 +77,6 @@ function! s:GetHighlight(hi)
   let hl = substitute(hl, 'xxx', '', '')
   return hl
 endfunction
-
 """"""""""""""""""""""""""""""
 "syntax check php when :w
 function! s:PHPLint()
@@ -87,7 +89,6 @@ augroup php-lint
   autocmd!
   autocmd BufWritePost *.php call <SID>PHPLint()
 augroup END
-
 """"""""""""""""""""""""""""""
 " local setting
 if filereadable(expand('~/.vimrc.local'))
