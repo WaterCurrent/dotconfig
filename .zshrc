@@ -1,15 +1,11 @@
 bindkey -e
-autoload -Uz vcs_info
-vcs_info
+autoload -Uz vcs_info; vcs_info
+autoload -Uz compinit; compinit
+autoload -Uz colors; colors
+autoload -Uz promptinit; promptinit
 autoload -Uz add-zsh-hook
 autoload -Uz chpwd_recent_dirs cdr
 add-zsh-hook chpwd chpwd_recent_dirs
-autoload -Uz compinit
-compinit
-autoload -Uz colors
-colors
-autoload -Uz promptinit
-promptinit
 
 setopt \
 hist_ignore_all_dups \
@@ -34,6 +30,7 @@ magic_equal_subst \
 ignoreeof \
 correct \
 transient_rprompt \
+nonomatch
 
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
