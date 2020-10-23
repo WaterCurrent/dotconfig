@@ -80,9 +80,9 @@ alias al="ls -Al $LS_OPTIONS"
 alias ll="ls -l  $LS_OPTIONS"
 alias lc="ls -c  $LS_OPTIONS"
 alias llc="ls -Alc $LS_OPTIONS"
-alias less="less -R"
+alias less="less $LESS_OPTIONS"
 alias grep="grep $GREP_OPTIONS"
-alias diff="diff --color=auto"
+alias diff="diff $DIFF_OPTIONS"
 alias emerge="emerge --quiet"
 alias eqf='equery f'
 alias equ='equery u'
@@ -99,6 +99,7 @@ alias eqy='equery y'
 alias eqs='equery s'
 alias eqw='equery w'
 alias tmux='tmux -u2'
+alias update-dotfiles='cd ~/.dotconfig&&git pull&&cd'
 
 if [ -e ~/.zshrc.local ]; then
     source ~/.zshrc.local
