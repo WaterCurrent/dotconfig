@@ -69,7 +69,7 @@ function ssh() {
 }
 
 function _ssh {
-  compadd `fgrep 'Host ' ~/.ssh/conf.d/* | awk '{print $2}' | sort`;
+  compadd `grep -r 'Host ' ~/.ssh/conf.d/**/*.hosts | awk '{print $2}' | sort`;
 }
 
 alias sudo="sudo "
