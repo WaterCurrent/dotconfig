@@ -1,8 +1,4 @@
-#export LANG=C
 export LANG=en_US.UTF-8
-#export LANG=ja_JP.UTF-8
-#export LC_CTYPE=en_US.UTF-8
-#export LC_TIME=en_DK.UTF-8
 export HISTSIZE=999999
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=$HISTSIZE
@@ -16,4 +12,4 @@ export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export EDITOR=vim
-export PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+[ -f $ZDOTDIR/.zprofile_`uname` ] && . $ZDOTDIR/.zprofile_`uname`

@@ -32,6 +32,9 @@ correct \
 transient_rprompt \
 nonomatch
 
+# linux or mac
+[ -f $ZDOTDIR/.zshrc_`uname` ] && . $ZDOTDIR/.zshrc_`uname`
+
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
@@ -54,9 +57,6 @@ PROMPT="[%n@%m:%F{yellow}%2~%f%F{yellow}%f]%F{yellow}%#%f "
 RPROMPT="%{$fg[black]%(?.$bg[green].$bg[red])%}<%?> \$history[\$((\$HISTCMD-1))]%{$reset_color%}"
 RPROMPT='${vcs_info_msg_0_} '$RPROMPT
 SPROMPT="correct: %R %F{green}->%f %r [nyae]? "
-
-GREP_OPTIONS="--color=auto --binary-files=without-match"
-LS_OPTIONS="--color=auto"
 
 function ssh() {
   if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
