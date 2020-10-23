@@ -1,10 +1,10 @@
-#!/bin/sh
-cd ~/
-ln -s .zprofile .dotconfig/.zprofile 
-ln -s .zprofile_Darwin .dotconfig/.zprofile_Darwin
-ln -s .zprofile_Linux .dotconfig/.zprofile_Linux
-ln -s .zshrc .dotconfig/.zshrc 
-ln -s .zshrc_Darwin .dotconfig/.zshrc_Darwin
-ln -s .zshrc_Linux .dotconfig/.zshrc_Linux
-ln -s .tmux.conf .dotconfig/.tmux.conf
-ln -s .vimrc .dotconfig/.vimrc
+#!/bin/sh  
+cd ~/  
+ln -s .dotconfig/.zprofile .zprofile
+ln -s .dotconfig/.zprofile_Darwin .zprofile_Darwin
+ln -s .dotconfig/.zprofile_Linux .zprofile_Linux
+ln -s .dotconfig/.zshrc .zshrc
+ln -s .dotconfig/.zshrc_Darwin .zshrc_Darwin
+ln -s .dotconfig/.zshrc_Linux .zshrc_Linux
+ln -s .dotconfig/.tmux.conf .tmux.conf
+ln -s .dotconfig/.vimrc .vimrc

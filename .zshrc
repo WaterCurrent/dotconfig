@@ -68,6 +68,10 @@ function ssh() {
   fi
 }
 
+function _ssh {
+  compadd `fgrep 'Host ' ~/.ssh/conf.d/* | awk '{print $2}' | sort`;
+}
+
 alias sudo="sudo "
 alias doas="doas "
 alias ls="ls $LS_OPTIONS"
