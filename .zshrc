@@ -33,7 +33,7 @@ transient_rprompt \
 nonomatch
 
 # linux or mac
-[ -f $ZDOTDIR/.zshrc_`uname` ] && . $ZDOTDIR/.zshrc_`uname`
+[ -f ~/.zshrc_`uname` ] && . ~/.zshrc_`uname`
 
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
@@ -74,6 +74,7 @@ function _ssh {
 
 alias sudo="sudo "
 alias doas="doas "
+alias c="clear"
 alias ls="ls $LS_OPTIONS"
 alias la="ls -Al $LS_OPTIONS"
 alias al="ls -Al $LS_OPTIONS"
@@ -110,3 +111,6 @@ if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
 fi
 
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
