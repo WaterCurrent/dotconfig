@@ -102,6 +102,12 @@ alias eqw='equery w'
 alias tmux='tmux -u2'
 alias update-dotfiles='cd ~/.dotconfig&&git pull&&cd'
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+if [ -e ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+fi
+
 if [ -e ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
@@ -109,8 +115,3 @@ fi
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
   zcompile ~/.zshrc
 fi
-
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
