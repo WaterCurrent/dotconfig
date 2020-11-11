@@ -59,10 +59,11 @@ RPROMPT='${vcs_info_msg_0_} '$RPROMPT
 SPROMPT="correct: %R %F{green}->%f %r [nyae]? "
 
 function ssh() {
-  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" =~ "tmux" ]; then
     tmux rename-window ${@: -1}
     command ssh "$@"
     tmux set-window-option automatic-rename "on" 1>/dev/null
+    tmux select-pane -P 'fg=colour255,bg=colour000'
   else
     command ssh "$@"
   fi
@@ -76,6 +77,7 @@ alias sudo="sudo "
 alias doas="doas "
 alias c="clear"
 alias ls="ls $LS_OPTIONS"
+alias sl="ls $LS_OPTIONS"
 alias la="ls -Al $LS_OPTIONS"
 alias al="ls -Al $LS_OPTIONS"
 alias ll="ls -l  $LS_OPTIONS"
