@@ -63,7 +63,7 @@ function ssh() {
     tmux rename-window ${@: -1}
     command ssh "$@"
     tmux set-window-option automatic-rename "on" 1>/dev/null
-    tmux select-pane -P 'fg=colour255,bg=colour000'
+    tmux select-pane -P 'fg=default,bg=default'
   else
     command ssh "$@"
   fi
