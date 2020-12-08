@@ -13,7 +13,6 @@ set smartindent
 set visualbell
 set laststatus=2
 set wildmode=list:longest
-set expandtab
 set tabstop=4
 set shiftwidth=4
 set ignorecase
