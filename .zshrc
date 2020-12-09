@@ -51,19 +51,22 @@ zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "[%F{green}%c%u%b%f]"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () { vcs_info }
 
-PROMPT="[%n@%m:%F{yellow}%2~%f%F{yellow}%f]%F{yellow}%#%f "
-RPROMPT="%{$fg[black]%(?.$bg[green].$bg[red])%}<%?> \$history[\$((\$HISTCMD-1))]%{$reset_color%}"
-RPROMPT='${vcs_info_msg_0_} '$RPROMPT
-SPROMPT="correct: %R %F{green}->%f %r [nyae]? "
+precmd () { vcs_info }
 
 function ssh() {
   if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" =~ "tmux" ]; then
+    if [ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.prod.hosts|awk '{print $2}'|grep $1)" = "$1" ]; then
+      tmux select-pane -P 'fg=colour255 bg=colour052'
+    fi
+    if [ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.stg.hosts|awk '{print $2}'|grep $1)" = "$1" ]; then
+      tmux select-pane -P 'fg=colour255 bg=colour017'
+    fi
     tmux rename-window ${@: -1}
     command ssh "$@"
-    tmux set-window-option automatic-rename "on" 1>/dev/null
+    clear
     tmux select-pane -P 'fg=default,bg=default'
+    tmux set-window-option automatic-rename "on" 1>/dev/null
   else
     command ssh "$@"
   fi
@@ -72,6 +75,33 @@ function ssh() {
 function _ssh {
   compadd `grep -r 'Host ' ~/.ssh/conf.d/**/*.hosts | awk '{print $2}' | sort`;
 }
+
+function history-all { history -E 1 }
+function get-gip-info { curl ipinfo.io/$1 }
+
+function cd() {
+  builtin cd "$@"
+
+  if [[ -z "$VIRTUAL_ENV" ]] ; then
+    ## If env folder is found then activate the vitualenv
+      if [[ -d ./.venv ]] ; then
+        source ./.venv/bin/activate
+      fi
+  else
+    ## check the current folder belong to earlier VIRTUAL_ENV folder
+    # if yes then do nothing
+    # else deactivate
+      parentdir="$(dirname "$VIRTUAL_ENV")"
+      if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+        deactivate
+      fi
+  fi
+}
+
+PROMPT="[%n@%m:%F{yellow}%2~%f%F{yellow}%f]%F{yellow}%#%f "
+RPROMPT="%{$fg[black]%(?.$bg[green].$bg[red])%}<%?> \$history[\$((\$HISTCMD-1))]%{$reset_color%}"
+RPROMPT='${vcs_info_msg_0_} '$RPROMPT
+SPROMPT="correct: %R %F{green}->%f %r [nyae]? "
 
 alias sudo="sudo "
 alias doas="doas "

@@ -8,3 +8,6 @@ ln -s .dotconfig/.zshrc_Darwin .zshrc_Darwin
 ln -s .dotconfig/.zshrc_Linux .zshrc_Linux
 ln -s .dotconfig/.tmux.conf .tmux.conf
 ln -s .dotconfig/.vimrc .vimrc
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
