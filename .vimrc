@@ -1,9 +1,9 @@
 colorscheme default
 set nocompatible
-set fenc=utf-8
-set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
-set fileformats=unix,dos,mac
+"set fenc=utf-8
+"set encoding=utf-8
+"set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+"set fileformats=unix,dos,mac
 set autoread
 set hidden
 set showcmd
@@ -26,6 +26,9 @@ set scrolloff=5
 set mouse=
 set history=10000
 set showmatch
+set ttimeoutlen=10
+set laststatus=2
+set statusline=%{(&fenc!=''?&fenc:&enc)}
 """"""""""""""""""""""""""""""
 "buffer
 nnoremap <silent> <C-j> :bprev<CR>
