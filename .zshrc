@@ -1,4 +1,5 @@
 bindkey -e
+# autoload {{{
 autoload -Uz vcs_info; vcs_info
 autoload -Uz compinit; compinit
 autoload -Uz colors; colors
@@ -6,7 +7,9 @@ autoload -Uz promptinit; promptinit
 autoload -Uz add-zsh-hook
 autoload -Uz chpwd_recent_dirs cdr
 add-zsh-hook chpwd chpwd_recent_dirs
+# }}}
 
+# setopt {{{
 setopt \
 hist_ignore_all_dups \
 hist_ignore_space \
@@ -28,13 +31,14 @@ noautoremoveslash \
 no_flow_control \
 magic_equal_subst \
 ignoreeof \
-correct \
 transient_rprompt \
 nonomatch
+# }}}
 
 # linux or mac
 [ -f ~/.zshrc_`uname` ] && . ~/.zshrc_`uname`
 
+# zstyle {{{
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
@@ -51,10 +55,11 @@ zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "[%F{green}%c%u%b%f]"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
+# }}}
 
 precmd () { vcs_info }
 
-function ssh() {
+function ssh() { # {{{
   if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" =~ "tmux" ]; then
     if [ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.prod.hosts|awk '{print $2}'|grep $1)" = "$1" ]; then
       tmux select-pane -P 'fg=colour255 bg=colour052'
@@ -70,33 +75,33 @@ function ssh() {
   else
     command ssh "$@"
   fi
-}
+} #}}}
 
-function _ssh {
+function _ssh { # {{{
   compadd `grep -r 'Host ' ~/.ssh/conf.d/**/*.hosts | awk '{print $2}' | sort`;
-}
+} #}}}
 
-function history-all {
+function history-all { #{{{
   history -E 1
-}
+} #}}}
 
-function get-gip-info {
+function get-gip-info { #{{{
   if [[ "$#" != 1 ]] ; then
     echo usase get-git-info [IPADDRESS]
   else
     curl ipinfo.io/$1
   fi
-}
+} #}}}
 
-function dirgrep {
+function dirgrep { # {{{
   if [[ "$#" != 2 ]] ; then
 		echo usase dirgrep [DIRECTORY] [TEXT]
 	else
     find $1 | xargs grep $2
 	fi
-}
+} # }}}
 
-function cd() {
+function cd() { # {{{
   builtin cd "$@"
 
   if [[ -z "$VIRTUAL_ENV" ]] ; then
@@ -113,13 +118,16 @@ function cd() {
       deactivate
     fi
   fi
-}
+} # }}}
 
-PROMPT="[%n@%m:%F{yellow}%2~%f%F{yellow}%f]%F{yellow}%#%f "
+# prompt {{{
+PROMPT="%F{green}%n@%m%f:%F{yellow}%2~%f%F{yellow}%#%f "
 RPROMPT="%{$fg[black]%(?.$bg[green].$bg[red])%}<%?> \$history[\$((\$HISTCMD-1))]%{$reset_color%}"
 RPROMPT='${vcs_info_msg_0_} '$RPROMPT
 SPROMPT="correct: %R %F{green}->%f %r [nyae]? "
+# }}}
 
+# alias {{{
 alias sudo="sudo "
 alias doas="doas "
 alias c="clear"
@@ -150,19 +158,19 @@ alias eqs='equery s'
 alias eqw='equery w'
 alias tmux='tmux -u2'
 alias update-dotfiles='cd ~/.dotconfig&&git pull&&cd'
+# }}}
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-if [ -e ~/.fzf.zsh ]; then
+if [ -e ~/.fzf.zsh ]; then # {{{
   source ~/.fzf.zsh
-fi
+fi # }}}
 
-if [ -e ~/.zshrc.local ]; then
+if [ -e ~/.zshrc.local ]; then # {{{
   source ~/.zshrc.local
-fi
+fi # }}}
 
-if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then # {{{
   zcompile ~/.zshrc
-fi
+fi # }}}
 
-# vim: ts=2 sw=2 sts=2 foldmethod=indent foldlevel=0 nowrap
+# vim: ts=2 sw=2 sts=2 sr noet foldmethod=marker foldlevel=0 nowrap
+
