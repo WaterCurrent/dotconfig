@@ -1,0 +1,49 @@
+colorscheme default
+set nocompatible
+set nocursorline
+set nocursorcolumn
+set norelativenumber
+set nowrap
+set autoread
+set hidden
+set showcmd
+set smartindent
+set visualbell
+set ignorecase
+set smartcase
+set wrapscan
+set incsearch
+set hlsearch
+set showmatch
+set vb t_vb=
+set mouse=
+set shortmess+=I
+set virtualedit=onemore
+set synmaxcol=255
+set laststatus=2
+set wildmode=list:longest
+set tabstop=2
+set shiftwidth=2
+set scrolloff=5
+set history=999
+set ttimeoutlen=10
+set laststatus=2
+set statusline=%{(&fenc!=''?&fenc:&enc)}
+""""""""""""""""""""""""""""""
+"buffer
+nnoremap <silent> <C-j> :bprev<CR>
+nnoremap <silent> <C-k> :bnext<CR>
+""""""""""""""""""""""""""""""
+"command line mode key bind
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-d> <Del>
+""""""""""""""""""""""""""""""
+" local setting
+"if filereadable(expand('~/.vimrc.local'))
+"  source ~/.vimrc.local
+"endif

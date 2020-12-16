@@ -76,25 +76,42 @@ function _ssh {
   compadd `grep -r 'Host ' ~/.ssh/conf.d/**/*.hosts | awk '{print $2}' | sort`;
 }
 
-function history-all { history -E 1 }
-function get-gip-info { curl ipinfo.io/$1 }
+function history-all {
+  history -E 1
+}
+
+function get-gip-info {
+  if [[ "$#" != 1 ]] ; then
+    echo usase get-git-info [IPADDRESS]
+  else
+    curl ipinfo.io/$1
+  fi
+}
+
+function dirgrep {
+  if [[ "$#" != 2 ]] ; then
+		echo usase dirgrep [DIRECTORY] [TEXT]
+	else
+    find $1 | xargs grep $2
+	fi
+}
 
 function cd() {
   builtin cd "$@"
 
   if [[ -z "$VIRTUAL_ENV" ]] ; then
     ## If env folder is found then activate the vitualenv
-      if [[ -d ./.venv ]] ; then
-        source ./.venv/bin/activate
-      fi
+    if [[ -d ./.venv ]] ; then
+      source ./.venv/bin/activate
+    fi
   else
     ## check the current folder belong to earlier VIRTUAL_ENV folder
     # if yes then do nothing
     # else deactivate
-      parentdir="$(dirname "$VIRTUAL_ENV")"
-      if [[ "$PWD"/ != "$parentdir"/* ]] ; then
-        deactivate
-      fi
+    parentdir="$(dirname "$VIRTUAL_ENV")"
+    if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+      deactivate
+    fi
   fi
 }
 
@@ -137,13 +154,15 @@ alias update-dotfiles='cd ~/.dotconfig&&git pull&&cd'
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 if [ -e ~/.fzf.zsh ]; then
-    source ~/.fzf.zsh
+  source ~/.fzf.zsh
 fi
 
 if [ -e ~/.zshrc.local ]; then
-    source ~/.zshrc.local
+  source ~/.zshrc.local
 fi
 
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
   zcompile ~/.zshrc
 fi
+
+# vim: ts=2 sw=2 sts=2 foldmethod=indent foldlevel=0 nowrap

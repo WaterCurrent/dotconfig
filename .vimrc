@@ -1,9 +1,5 @@
 colorscheme default
 set nocompatible
-"set fenc=utf-8
-"set encoding=utf-8
-"set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
-"set fileformats=unix,dos,mac
 set autoread
 set hidden
 set showcmd
@@ -13,8 +9,8 @@ set smartindent
 set visualbell
 set laststatus=2
 set wildmode=list:longest
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set ignorecase
 set smartcase
 set incsearch
@@ -100,3 +96,5 @@ endif
 if filereadable(expand('~/.vimrc.plugged'))
   source ~/.vimrc.plugged
 endif
+
+" vim: ts=2 sw=2 sts=2 foldmethod=indent foldlevel=0 nowrap
