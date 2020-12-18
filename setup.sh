@@ -15,3 +15,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh ~/.cache/dein
+
+python3 -m venv .venvs/nvim
+pip3 install pynvim
