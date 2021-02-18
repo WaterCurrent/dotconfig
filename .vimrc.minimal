@@ -49,7 +49,7 @@ cnoremap <C-d> <Del>
 "}}}
 
 "foldmethod Setting {{{
-set foldmethod=indent
+set foldmethod=marker
 noremap [space] <nop>
   nmap <Space> [space]
 noremap [space] za
@@ -61,4 +61,3 @@ if filereadable(expand('~/.vimrc.local'))
 endif
 "}}}
 " vim: ts=2 sw=2 sts=2 sr noet foldmethod=marker foldlevel=0 nowrap
-
