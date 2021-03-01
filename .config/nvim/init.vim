@@ -29,6 +29,7 @@ set nocompatible
 set encoding=utf-8
 set fileencodings=utf-8
 set fileformats=unix,dos,mac
+set modeline
 set notitle
 set nowrap
 set shortmess+=I
@@ -62,7 +63,7 @@ syntax on
 ":set list listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 ":set list listchars=tab:»-,eol:↲,extends:»,precedes:«,nbsp:%
 """""""""""""""""""""""""""""""
-"skk-vim options
+"skk-vim options {{{
 "let g:skk_large_jisyo='~/.skk-dic/SKK-JISYO-utf8.L'
 "let g:skk_egg_like_newline=1
 "let g:skk_auto_save_jisyo=1
@@ -71,6 +72,7 @@ syntax on
 "	\	'sorted': 1,
 "	\	'encoding': 'utf-8',
 "	\}
+"	}}}
 """""""""""""""""""""""""""""""
 "let g:deoplete#enable_at_startup = 1
 """""""""""""""""""""""""""""""
@@ -94,3 +96,5 @@ if filereadable(expand('~/.config/nvim/init.vim.local'))
   source ~/.config/nvim/init.vim.local
 endif
 "}}}
+
+" vim: ts=2 sw=2 sts=2 foldmethod=marker foldlevel=0 nowrap
