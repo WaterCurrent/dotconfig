@@ -61,10 +61,10 @@ precmd () { vcs_info }
 
 function ssh() { # {{{
   if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" =~ "tmux" ]; then
-    if [ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.prod.hosts|awk '{print $2}'|grep $1)" = "$1" ]; then
+		if [ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.prod.hosts|awk '{print $2}'|grep $1|head -n 1)" = "$1" ]; then
       tmux select-pane -P 'fg=colour255 bg=colour052'
     fi
-    if [ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.stg.hosts|awk '{print $2}'|grep $1)" = "$1" ]; then
+		if [ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.stg.hosts|awk '{print $2}'|grep $1|head -n 1)" = "$1" ]; then
       tmux select-pane -P 'fg=colour255 bg=colour017'
     fi
     tmux rename-window ${@: -1}
