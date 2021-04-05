@@ -121,10 +121,22 @@ function cd() { # {{{
 } # }}}
 
 # prompt {{{
-PROMPT="%F{green}%n@%m%f:%F{yellow}%2~%f%F{yellow}%#%f "
-RPROMPT="%{$fg[black]%(?.$bg[green].$bg[red])%}<%?> \$history[\$((\$HISTCMD-1))]%{$reset_color%}"
-RPROMPT='${vcs_info_msg_0_} '$RPROMPT
-SPROMPT="correct: %R %F{green}->%f %r [nyae]? "
+case ${USERNAME} in
+	'root')
+		#PROMPT="%F{red}%n%f@%F{green}%m%f:%F{cyan}%2~%f%F{red}%#%f "
+		PROMPT="%F{red}%n%f@%F{green}%m%f%F{red}%#%f "
+		RPROMPT="%{$fg[black]%(?.$bg[green].$bg[red])%}<%?> \$history[\$((\$HISTCMD-1))]%{$reset_color%}"
+		RPROMPT='${vcs_info_msg_0_} '$RPROMPT
+		SPROMPT="correct: %R %F{green}->%f %r [nyae]? "
+		;;
+	*)
+		#PROMPT="%F{green}%n%f@%F{green}%m%f:%F{cyan}%2~%f%F{white}%#%f "
+		PROMPT="%F{green}%n%f@%F{green}%m%f%F{white}%#%f "
+		RPROMPT="%{$fg[black]%(?.$bg[green].$bg[red])%}<%?> \$history[\$((\$HISTCMD-1))]%{$reset_color%}"
+		RPROMPT='${vcs_info_msg_0_} '$RPROMPT
+		SPROMPT="correct: %R %F{green}->%f %r [nyae]? "
+		;;
+esac
 # }}}
 
 # alias {{{

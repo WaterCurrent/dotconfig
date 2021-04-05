@@ -88,9 +88,7 @@ syntax on
 "highlight PMenuSbar ctermbg=0
 "inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : “<CR>”
 """""""""""""""""""""""""""""""
-"autofmt option
-"set formatexpr=autofmt#japanese#formatexpr()
-
+"autofmt option "set formatexpr=autofmt#japanese#formatexpr() 
 "local setting {{{
 if filereadable(expand('~/.config/nvim/init.vim.local'))
   source ~/.config/nvim/init.vim.local
