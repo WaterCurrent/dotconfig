@@ -74,6 +74,7 @@ zshaddhistory() {
         && ${cmd} != (c|cd)
         && ${cmd} != (m|man)
         && ${cmd} != (reboot|shutdown|poweroff)
+        && ${cmd} != (top|htop)
     ]]
 }
 #}}}
