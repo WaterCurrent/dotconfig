@@ -57,7 +57,26 @@ zstyle ':vcs_info:*' formats "[%F{green}%c%u%b%f]"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 # }}}
 
-precmd () { vcs_info }
+# precmd () {{{
+precmd () {
+	vcs_info
+}
+#}}}
+
+# zshaddhistory() {{{
+zshaddhistory() {
+    local line=${1%%$'\n'}
+    local cmd=${line%% *}
+
+    # 以下の条件をすべて満たすものだけをヒストリに追加する
+    [[ ${#line} -ge 5
+        && ${cmd} != (l|l[sal])
+        && ${cmd} != (c|cd)
+        && ${cmd} != (m|man)
+        && ${cmd} != (reboot|shutdown|poweroff)
+    ]]
+}
+#}}}
 
 function ssh() { # {{{
   if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" =~ "tmux" ]; then
