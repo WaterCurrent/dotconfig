@@ -20,16 +20,16 @@ repo = 'Shougo/dein.vim'
 #	    \   'encoding': 'utf-8',
 #	    \}
 #'''
-
-[[plugins]]
-repo = 'vim-jp/autofmt'
-
-[[plugins]]
-repo = 'Shougo/neco-vim'
-
-[[plugins]]
-repo = 'Shougo/neco-syntax'
-
-[[plugins]]
-repo = 'ujihisa/neco-look'
-
+#
+#[[plugins]]
+#repo = 'vim-jp/autofmt'
+#
+#[[plugins]]
+#repo = 'Shougo/neco-vim'
+#
+#[[plugins]]
+#repo = 'Shougo/neco-syntax'
+#
+#[[plugins]]
+#repo = 'ujihisa/neco-look'
+#
