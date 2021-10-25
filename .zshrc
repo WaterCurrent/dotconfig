@@ -174,6 +174,7 @@ alias less="less $LESS_OPTIONS"
 alias grep="grep $GREP_OPTIONS"
 alias diff="diff $DIFF_OPTIONS"
 alias dmesg="dmesg $DMESG_OPTIONS"
+alias drill="drill -z"
 alias ip="ip $IP_OPTIONS"
 alias emerge="emerge --quiet"
 alias eqf='equery f'
@@ -207,4 +208,3 @@ if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then # {{{
 fi # }}}
 
 # vim: ts=2 sw=2 sts=2 sr noet foldmethod=marker foldlevel=0 nowrap
-
