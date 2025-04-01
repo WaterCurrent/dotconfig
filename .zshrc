@@ -98,9 +98,10 @@ function ssh() { # {{{
 } #}}}
 
 function _ssh { # {{{
-	if [ -f "~/.ssh/conf.d/**/*.hosts" ]; then
-  compadd `grep -r 'Host ' ~/.ssh/conf.d/**/*.hosts | awk '{print $2}' | sort`;
-	fi
+  local files=(~/.ssh/conf.d/**/*.hosts)
+  if [[ ${#files[@]} -gt 0 ]]; then
+    compadd `grep -r 'Host ' ~/.ssh/conf.d/**/*.hosts | awk '{print $2}' | sort`;
+  fi
 } #}}}
 
 function cd() { # {{{
