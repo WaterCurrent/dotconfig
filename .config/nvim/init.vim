@@ -37,6 +37,9 @@ set notitle
 set nowrap
 set shortmess+=I
 set history=10000
+set viminfo=
+set noundofile
+set noswapfile
 "set nobackup
 "set noautoindent
 set autoindent

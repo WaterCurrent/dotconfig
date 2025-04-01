@@ -9,6 +9,8 @@ set incsearch
 set wrapscan
 set hlsearch
 set title
+set viminfo=
+set noundofile
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set scrolloff=5
 set cursorline

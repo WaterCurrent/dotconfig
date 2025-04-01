@@ -98,28 +98,10 @@ function ssh() { # {{{
 } #}}}
 
 function _ssh { # {{{
+	if [ -f "~/.ssh/conf.d/**/*.hosts" ]; then
   compadd `grep -r 'Host ' ~/.ssh/conf.d/**/*.hosts | awk '{print $2}' | sort`;
-} #}}}
-
-function history-all { #{{{
-  history -E 1
-} #}}}
-
-function get-gip-info { #{{{
-  if [[ "$#" != 1 ]] ; then
-    echo usase get-git-info [IPADDRESS]
-  else
-    curl ipinfo.io/$1
-  fi
-} #}}}
-
-function dirgrep { # {{{
-  if [[ "$#" != 2 ]] ; then
-		echo usase dirgrep [DIRECTORY] [TEXT]
-	else
-    find $1 | xargs grep $2
 	fi
-} # }}}
+} #}}}
 
 function cd() { # {{{
   builtin cd "$@"
