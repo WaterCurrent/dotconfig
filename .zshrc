@@ -100,7 +100,7 @@ function ssh() { # {{{
 function _ssh { # {{{
   local files=(~/.ssh/conf.d/**/*.hosts)
   if [[ ${#files[@]} -gt 0 ]]; then
-    compadd `grep -r 'Host ' ~/.ssh/conf.d/**/*.hosts | awk '{print $2}' | sort`;
+    compadd `grep -r 'Host ' ~/.ssh/conf.d/**/*.hosts | grep -v ':#Host' | awk '{print $2}' | sort`;
   fi
 } #}}}
 
