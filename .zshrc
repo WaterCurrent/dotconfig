@@ -107,7 +107,7 @@ function _ssh { # {{{
 function cd() { # {{{
   builtin cd "$@"
 
-  if [[ -z "$VIRTUAL_ENV" ]] ; then
+  if [[ -z "$VIRTUAL_ENV" && ! -e ~/.python-version ]] ; then
     ## If env folder is found then activate the vitualenv
     if [[ -d ./.venv ]] ; then
       source ./.venv/bin/activate
@@ -117,7 +117,7 @@ function cd() { # {{{
     # if yes then do nothing
     # else deactivate
     parentdir="$(dirname "$VIRTUAL_ENV")"
-    if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+    if [[ "$PWD"/ != "$parentdir"/* && ! -e ~/.python-version ]] ; then
       deactivate
     fi
   fi
