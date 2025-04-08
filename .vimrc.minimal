@@ -1,5 +1,6 @@
 set nocompatible
 set modeline
+set modelines=5
 set vb t_vb=
 set shortmess+=I
 set encoding=utf-8
