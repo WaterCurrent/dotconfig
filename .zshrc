@@ -10,7 +10,7 @@ add-zsh-hook chpwd chpwd_recent_dirs
 # }}}
 
 # setopt #{{{
-setopt \ 
+setopt \
 hist_ignore_all_dups \
 hist_ignore_space \
 hist_reduce_blanks \
