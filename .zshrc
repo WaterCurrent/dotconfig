@@ -10,29 +10,28 @@ add-zsh-hook chpwd chpwd_recent_dirs
 # }}}
 
 # setopt #{{{
-setopt \
-hist_ignore_all_dups \
-hist_ignore_space \
-hist_reduce_blanks \
-hist_save_no_dups \
-hist_no_store \
-list_packed \
-prompt_subst \
-nobeep \
-auto_menu \
-auto_pushd \
-auto_param_keys \
-share_history \
-extended_history \
-extended_glob \
-brace_ccl \
-chase_links \
-noautoremoveslash \
-no_flow_control \
-magic_equal_subst \
-ignoreeof \
-transient_rprompt \
-nonomatch
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt hist_no_store
+setopt list_packed
+setopt prompt_subst
+setopt nobeep
+setopt auto_menu
+setopt auto_pushd
+setopt auto_param_keys
+setopt share_history
+setopt extended_history
+setopt extended_glob
+setopt brace_ccl
+setopt chase_links
+setopt noautoremoveslash
+setopt no_flow_control
+setopt magic_equal_subst
+setopt ignoreeof
+setopt transient_rprompt
+setopt nonomatch
 # }}}
 
 # linux or mac
