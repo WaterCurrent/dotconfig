@@ -9,8 +9,8 @@ autoload -Uz chpwd_recent_dirs cdr
 add-zsh-hook chpwd chpwd_recent_dirs
 # }}}
 
-# setopt {{{
-setopt \
+# setopt #{{{
+setopt \ 
 hist_ignore_all_dups \
 hist_ignore_space \
 hist_reduce_blanks \
@@ -79,19 +79,24 @@ zshaddhistory() {
 }
 #}}}
 
-function ssh() { # {{{
-  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" =~ "tmux" ]; then
-		if [ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.prod.hosts|awk '{print $2}'|grep $1|head -n 1)" = "$1" ]; then
-      tmux select-pane -P 'fg=colour255 bg=colour052'
+function ssh() { #{{{
+  if [[ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" =~ "tmux" ]]; then
+    local pane_id=$(tmux display-message -p '#{pane_id}')
+    local reset_cmd="tmux select-pane -t $pane_id -P 'fg=default,bg=default'; tmux set-window-option -t $pane_id.window_index automatic-rename on 1>/dev/null"
+
+    trap "$reset_cmd" EXIT
+
+    if [[ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.prod.hosts | awk '{print $2}' | grep $1 | head -n 1)" = "$1" ]]; then
+      tmux select-pane -t $pane_id -P 'fg=colour255 bg=colour052'
     fi
-		if [ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.stg.hosts|awk '{print $2}'|grep $1|head -n 1)" = "$1" ]; then
-      tmux select-pane -P 'fg=colour255 bg=colour017'
+
+    if [[ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.stg.hosts | awk '{print $2}' | grep $1 | head -n 1)" = "$1" ]]; then
+      tmux select-pane -t $pane_id -P 'fg=colour255 bg=colour017'
     fi
-    tmux rename-window ${@: -1}
+
+    tmux rename-window "${@: -1}"
     command ssh "$@"
     clear
-    tmux select-pane -P 'fg=default,bg=default'
-    tmux set-window-option automatic-rename "on" 1>/dev/null
   else
     command ssh "$@"
   fi
