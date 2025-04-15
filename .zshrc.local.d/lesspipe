@@ -1,0 +1,2 @@
+# --- Lesspipe
+command -v lesspipe.sh &>/dev/null && export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'

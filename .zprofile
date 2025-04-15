@@ -14,6 +14,7 @@ export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export EDITOR=vim
+export PAGER=less
 
 if [ -e ~/.zprofile_`uname` ]; then
     source ~/.zprofile_`uname` 

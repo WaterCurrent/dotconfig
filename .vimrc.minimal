@@ -18,3 +18,7 @@ set cursorline
 highlight CursorLine guibg=#0000A0 ctermbg=blue
 set cursorcolumn
 highlight CursorColumn guibg=#0000A0 ctermbg=blue
+
+noremap [space] <nop>
+  nmap <Space> [space]
+noremap [space] za

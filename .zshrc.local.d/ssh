@@ -1,0 +1,32 @@
+function ssh() { 
+  if [[ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" =~ "tmux" ]]; then
+    local pane_id=$(tmux display-message -p '#{pane_id}')
+		local reset_cmd="tmux select-pane -t $pane_id -P 'fg=default,bg=default'; tmux set-window-option -t $pane_id.window_index automatic-rename on"
+
+    trap "$reset_cmd" EXIT
+
+    if [[ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.prod.hosts | awk '{print $2}' | grep $1 | head -n 1)" = "$1" ]]; then
+      tmux select-pane -t $pane_id -P 'fg=colour255 bg=colour052'
+    fi
+
+    if [[ "$(grep -r 'Host ' ~/.ssh/conf.d/**/*.stg.hosts | awk '{print $2}' | grep $1 | head -n 1)" = "$1" ]]; then
+      tmux select-pane -t $pane_id -P 'fg=colour255 bg=colour017'
+    fi
+
+    tmux rename-window "${@: -1}"
+    command ssh "$@"
+    clear
+  else
+    command ssh "$@"
+  fi
+}
+
+function _ssh {
+  local files=(~/.ssh/conf.d/**/*.hosts)
+  if [[ ${#files[@]} -gt 0 ]]; then
+    compadd `grep -r 'Host ' ~/.ssh/conf.d/**/*.hosts |grep -v 'Match' |grep -v ':#Host' | awk '{print $2}' | sort | uniq`;
+    compadd `grep -r 'Match host ' ~/.ssh/conf.d/**/*.hosts | grep -v ':#Host' | awk '{print $3}' | sort | uniq`;
+  fi
+}
+
+# vim: ts=2 sw=2 sts=2 sr noet foldmethod=marker foldlevel=0 nowrap
